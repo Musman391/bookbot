@@ -2,7 +2,7 @@ def main():
     book_path = "books/frankenstein.txt"
     text = read_book(book_path)
     words = num_of_words(text)
-    print(words)
+    count_characters(text)
 
 
 def read_book(book):
@@ -12,10 +12,19 @@ def read_book(book):
 
 def num_of_words(text):
     words = 0
-    for word in text.split():
-        words += 1
+    words = text.split()
+    return len(words)
 
-    return words
+
+def count_characters(text):
+    charCount = {}
+    words = text.split()
+    for word in words:
+        for character in word:
+            charCount[character] = charCount.get(character, 0) + 1
+
+    for character in charCount:
+        print(character + ":" + charCount[character])
 
 
 main()
